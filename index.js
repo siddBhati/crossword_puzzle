@@ -1,9 +1,3 @@
-
-
-//---------------------------------//
-//   GLOBAL VARIABLES              //
-//---------------------------------//
-
 var grid, wordArr, wordBank, wordsActive, gridMap, 
     focusChar, focusIndex = null, mode, 
     wordElementsAcross, wordElementsDown;
@@ -29,9 +23,7 @@ var Bounds = {
 };
 
 
-//---------------------------------//
-//   MAIN                          //
-//---------------------------------//
+
 
 function Play(){  
   var charEleArr = document.getElementsByClassName('char');
@@ -195,7 +187,7 @@ function PrepareGrid(){
   for(var i = 0, len = wordArr.length; i < len; i++){
     wordBank.push(new WordObj(wordArr[i]));
   }
-  //console.log(wordBank);
+  
   
   for(i = 0; i < wordBank.length; i++){
     for(var j = 0, wA=wordBank[i]; j<wA.char.length; j++){
@@ -209,7 +201,7 @@ function PrepareGrid(){
 }
 
 
-// TODO: Clean this guy up
+
 function AddWordToGrid(){
   var i, len, curIndex, curWord, curChar, curMatch, testWord, testChar, minMatchDiff = 9999, curMatchDiff;  
 
@@ -228,7 +220,6 @@ function AddWordToGrid(){
     
     for(i = 0, len = wordBank.length; i < len; i++){
       curWord = wordBank[i];
-	  //console.log(curWord);
       curWord.effectiveMatches = 0;
       curWord.successfulMatches = [];
       for(var j = 0, lenJ = curWord.char.length; j < lenJ; j++){
@@ -394,7 +385,6 @@ function GridToHtml(blank){
 
 function GridCharToElement(c){
   var inner = "";
- //console.log(inner);
   
   if (c.value !== null){
     var num = "";
@@ -491,9 +481,7 @@ function GridCharFocus(gridChar){
 }
 
 
-//---------------------------------//
-//   OBJECT DEFINITIONS            //
-//---------------------------------//
+
 
 function WordObj(wordData){
   this.element = wordData.ele;
@@ -505,9 +493,7 @@ function WordObj(wordData){
 }
 
 
-//---------------------------------//
-//   EVENTS                        //
-//---------------------------------//
+
 
 function RegisterEvents(){  
   document.getElementById("btnPlay").addEventListener(
@@ -540,9 +526,7 @@ function CreateCallback(type, gridChar) {
 }
 
 
-//---------------------------------//
-//   HELPER FUNCTIONS              //
-//---------------------------------//
+
 
 function EleStr(e,c,h){
   h = (h)?h:"";
@@ -578,16 +562,13 @@ String.prototype.replaceAll = function (replaceThis, withThis) {
 };
 
 
-//---------------------------------//
-//   INITIAL LOAD                  //
-//---------------------------------//
+// Do not delete, Hidden buttons associated with events
 
 Create();
 Generate();
 Play();
 
 
-//==================================================//
 
 $( "#btnCheck" ).click(function() {
 	  $( ".square input" ).each(function() {
@@ -598,9 +579,6 @@ $( "#btnCheck" ).click(function() {
 	});
 });
 
-// $('#btnReset').click(function() {
-//     window.location.reload();
-// });
-$('#btnShuffle').click(function() {
-  window.location.reload();
+$('#btnReset').click(function() {
+    window.location.reload();
 });
